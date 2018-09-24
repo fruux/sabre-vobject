@@ -79,7 +79,7 @@ ICS;
             ],
         ];
 
-        $this->parse(null, $message, $expected, 'mailto:strunk@example.org');
+        $this->parse(null, $message, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -104,7 +104,7 @@ END:VEVENT
 END:VCALENDAR
 ICS;
 
-        $this->parse(null, $message, [], 'mailto:strunk@example.org');
+        $this->parse(null, $message, [], 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
     /**
@@ -128,7 +128,7 @@ END:VEVENT
 END:VCALENDAR
 ICS;
 
-        $this->parse(null, $message, [], 'mailto:strunk@example.org');
+        $this->parse(null, $message, [], 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -256,7 +256,7 @@ ICS
             ],
         ];
 
-        $this->parse(null, $message, $expected, 'mailto:strunk@example.org');
+        $this->parse(null, $message, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -384,7 +384,7 @@ ICS
             ],
         ];
 
-        $this->parse(null, $message, $expected, 'mailto:strunk@example.org');
+        $this->parse(null, $message, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -457,7 +457,7 @@ ICS;
 
         $version = \Sabre\VObject\Version::VERSION;
 
-        $this->parse(null, $message, [], 'mailto:strunk@example.org');
+        $this->parse(null, $message, [], 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -491,7 +491,7 @@ END:VCALENDAR
 ICS;
 
         $version = \Sabre\VObject\Version::VERSION;
-        $this->parse(null, $message, [], 'mailto:strunk@example.org');
+        $this->parse(null, $message, [], 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -525,7 +525,7 @@ END:VCALENDAR
 ICS;
 
         $version = \Sabre\VObject\Version::VERSION;
-        $this->parse(null, $message, [], 'mailto:strunk@example.org');
+        $this->parse(null, $message, [], 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
     function testNoOrganizerHasAttendee() {

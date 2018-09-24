@@ -86,7 +86,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -172,7 +172,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -229,7 +229,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org', ['mailto:strunk@example.org']);
 
 
     }
@@ -287,7 +287,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org', ['mailto:strunk@example.org']);
 
 
     }
@@ -315,14 +315,14 @@ ICS;
 
         $expected = [];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:one@example.org', ['mailto:strunk@example.org']);
 
 
     }
 
     function testNoCalendar() {
 
-        $this->parse(null, null, [], 'mailto:one@example.org');
+        $this->parse(null, null, [], 'mailto:one@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -337,7 +337,7 @@ SEQUENCE:1
 END:VTODO
 END:VCALENDAR
 ICS;
-        $this->parse($oldMessage, null, [], 'mailto:one@example.org');
+        $this->parse($oldMessage, null, [], 'mailto:one@example.org', ['mailto:strunk@example.org']);
 
     }
 

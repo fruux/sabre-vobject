@@ -135,7 +135,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -200,7 +200,7 @@ ICS
 
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -262,7 +262,7 @@ ICS
 
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -296,7 +296,7 @@ ICS;
         $version = \Sabre\VObject\Version::VERSION;
 
         $expected = [];
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -367,7 +367,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -507,7 +507,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -578,7 +578,7 @@ ICS
 
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -649,7 +649,7 @@ ICS
 
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -749,7 +749,7 @@ ICS
             ],
         ];
 
-        $result = $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $result = $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 
@@ -840,7 +840,7 @@ ICS
             ],
         ];
 
-        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org');
+        $this->parse($oldMessage, $newMessage, $expected, 'mailto:strunk@example.org', ['mailto:strunk@example.org']);
 
     }
 }

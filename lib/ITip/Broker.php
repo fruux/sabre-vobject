@@ -162,11 +162,16 @@ class Broker {
      *
      * @param VCalendar|string $calendar
      * @param string|array $userHref
+     * @param array $usersWriteAccess
      * @param VCalendar|string $oldCalendar
      *
      * @return array
      */
-    function parseEvent($calendar = null, $userHref, $oldCalendar = null) {
+    function parseEvent($calendar = null, $userHref, $usersWriteAccess, $oldCalendar = null) {
+
+        if (!$usersWriteAccess || empty($usersWriteAccess)) {
+            return;
+        }
 
         if ($oldCalendar) {
             if (is_string($oldCalendar)) {
@@ -187,6 +192,7 @@ class Broker {
         }
 
         $userHref = (array)$userHref;
+        $hasWriteAccess = !empty(array_intersect($userHref, $usersWriteAccess));
 
         if (!is_null($calendar)) {
 
@@ -228,7 +234,7 @@ class Broker {
 
             $eventInfo = $oldEventInfo;
 
-            if (in_array($eventInfo['organizer'], $userHref)) {
+            if ($hasWriteAccess) {
                 // This is an organizer deleting the event.
                 $eventInfo['attendees'] = [];
                 // Increasing the sequence, but only if the organizer deleted
@@ -248,8 +254,8 @@ class Broker {
 
         }
 
-        if (in_array($eventInfo['organizer'], $userHref)) {
-            return $this->parseEventForOrganizer($baseCalendar, $eventInfo, $oldEventInfo);
+        if ($hasWriteAccess) {
+            return $this->parseEventForOrganizer($baseCalendar, $eventInfo, $oldEventInfo, $userHref);
         } elseif ($oldCalendar) {
             // We need to figure out if the user is an attendee, but we're only
             // doing so if there's an oldCalendar, because we only want to
@@ -462,10 +468,11 @@ class Broker {
      * @param VCalendar $calendar
      * @param array $eventInfo
      * @param array $oldEventInfo
+     * @param array $userHref
      *
      * @return array
      */
-    protected function parseEventForOrganizer(VCalendar $calendar, array $eventInfo, array $oldEventInfo) {
+    protected function parseEventForOrganizer(VCalendar $calendar, array $eventInfo, array $oldEventInfo, array $userHref = []) {
 
         // Merging attendee lists.
         $attendees = [];
@@ -500,7 +507,7 @@ class Broker {
 
             // An organizer can also be an attendee. We should not generate any
             // messages for those.
-            if ($attendee['href'] === $eventInfo['organizer']) {
+            if (in_array($attendee['href'], $userHref)) {
                 continue;
             }
 

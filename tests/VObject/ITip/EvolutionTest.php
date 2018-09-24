@@ -1734,7 +1734,7 @@ ICS;
                 'message'       => $expectedICS,
             ]
         ];
-        $this->parse(null, $ics, $expected, 'mailto:martin@fruux.com');
+        $this->parse(null, $ics, $expected, 'mailto:martin@fruux.com', ['mailto:martin@fruux.com']);
 
     }
 
@@ -2644,7 +2644,7 @@ END:VEVENT
 END:VCALENDAR
 ICS;
 
-        $this->parse($old, $new, [], 'mailto:a1@example.org');
+        $this->parse($old, $new, [], 'mailto:a1@example.org', ['mailto:o@example.org']);
 
 
     }
