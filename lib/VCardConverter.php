@@ -142,8 +142,7 @@ class VCardConverter
                         break;
                 }
             } elseif ('MEMBER' === $property->name) {
-					$newProperty = $output->createProperty('X-ADDRESSBOOKSERVER-MEMBER', $property->getValue());
-					break;
+                $newProperty = $output->createProperty('X-ADDRESSBOOKSERVER-MEMBER', $property->getValue());
             }
             
         } elseif (Document::VCARD40 === $targetVersion) {
