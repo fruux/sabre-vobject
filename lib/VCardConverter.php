@@ -178,7 +178,7 @@ class VCardConverter
                     }
                     break;
                 case 'X-ADDRESSBOOKSERVER-MEMBER':
-					$newProperty = $output->createProperty('MEMBER', $property->getValue());
+                        $newProperty = $output->createProperty('MEMBER', $property->getValue());
                     break;	                    
                 case 'X-ANNIVERSARY':
                     $newProperty->name = 'ANNIVERSARY';
