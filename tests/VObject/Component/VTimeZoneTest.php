@@ -51,4 +51,26 @@ HI;
             $obj->VTIMEZONE->getTimeZone()
         );
     }
+
+    public function testEmptyTimeZone()
+    {
+        $input = <<<HI
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:YoYo
+BEGIN:VTIMEZONE
+TZID:
+END:VTIMEZONE
+END:VCALENDAR
+HI;
+
+        $obj = Reader::read($input);
+
+        $tz = new \DateTimeZone(date_default_timezone_get());
+
+        $this->assertEquals(
+            $tz,
+            $obj->VTIMEZONE->getTimeZone()
+        );
+    }
 }
