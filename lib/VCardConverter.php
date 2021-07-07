@@ -140,7 +140,10 @@ class VCardConverter
                         $newProperty = $output->createProperty('X-ADDRESSBOOKSERVER-KIND', 'GROUP');
                         break;
                 }
+            } elseif ('MEMBER' === $property->name) {
+                $newProperty = $output->createProperty('X-ADDRESSBOOKSERVER-MEMBER', $property->getValue());
             }
+            
         } elseif (Document::VCARD40 === $targetVersion) {
             // These properties were removed in vCard 4.0
             if (in_array($property->name, ['NAME', 'MAILER', 'LABEL', 'CLASS'])) {
@@ -173,6 +176,9 @@ class VCardConverter
                         $newProperty = $output->createProperty('KIND', 'GROUP');
                     }
                     break;
+                case 'X-ADDRESSBOOKSERVER-MEMBER':
+                        $newProperty = $output->createProperty('MEMBER', $property->getValue());
+                    break;	                    
                 case 'X-ANNIVERSARY':
                     $newProperty->name = 'ANNIVERSARY';
                     // If we already have an anniversary property with the same
