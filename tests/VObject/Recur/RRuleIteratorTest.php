@@ -887,9 +887,7 @@ class RRuleIteratorTest extends TestCase
         $this->parse(
             'FREQ=DAILY;UNTIL=20140101T000000Z',
             '2014-08-02 00:15:00',
-            [
-                '2014-08-02 00:15:00',
-            ]
+            []
         );
     }
 

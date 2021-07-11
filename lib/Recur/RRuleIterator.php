@@ -709,18 +709,6 @@ class RRuleIterator implements Iterator
 
                 case 'UNTIL':
                     $this->until = DateTimeParser::parse($value, $this->startDate->getTimezone());
-
-                    // In some cases events are generated with an UNTIL=
-                    // parameter before the actual start of the event.
-                    //
-                    // Not sure why this is happening. We assume that the
-                    // intention was that the event only recurs once.
-                    //
-                    // So we are modifying the parameter so our code doesn't
-                    // break.
-                    if ($this->until < $this->startDate) {
-                        $this->until = $this->startDate;
-                    }
                     break;
 
                 case 'INTERVAL':
