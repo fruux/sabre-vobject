@@ -580,11 +580,12 @@ class RRuleIterator implements Iterator
                     // loop through all YearDay and Days to check all the combinations
                     foreach ($this->byYearDay as $byYearDay) {
                         $date = clone $this->currentDate;
-                        $date = $date->setDate($currentYear, 1, 1);
                         if ($byYearDay > 0) {
-                            $date = $date->add(new \DateInterval('P'.$byYearDay.'D'));
+                            $date = $date->setDate($currentYear, 1, 1);
+                            $date = $date->add(new \DateInterval('P'.($byYearDay - 1).'D'));
                         } else {
-                            $date = $date->sub(new \DateInterval('P'.abs($byYearDay).'D'));
+                            $date = $date->setDate($currentYear, 12, 31);
+                            $date = $date->sub(new \DateInterval('P'.abs($byYearDay + 1).'D'));
                         }
 
                         if ($date > $this->currentDate && in_array($date->format('N'), $dayOffsets)) {
